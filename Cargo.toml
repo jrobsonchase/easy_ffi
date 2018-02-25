@@ -2,5 +2,14 @@
 name = "easy_ffi"
 version = "0.1.0"
 authors = ["Josh Chase <josh@jec.pw>"]
+description = "An unwind-safe ergonomic ffi wrapper generator for Rust"
+documentation = "https://docs.rs/easy_ffi"
+homepage = "https://docs.rs/easy_ffi"
+keywords = [
+    "ffi",
+	"macros",
+]
+license = "MIT/Apache-2.0"
+repository = "https://github.com/jechase/easy_ffi"
 
 [dependencies]
