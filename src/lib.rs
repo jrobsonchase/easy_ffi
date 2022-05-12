@@ -77,7 +77,7 @@
 //!         // so we're going to do so here:
 //!         -1
 //!     }
-//!     // Next, the panic. This will have the type `Box<Any + Send + 'static>`. See
+//!     // Next, the panic. This will have the type `Box<dyn Any + Send + 'static>`. See
 //!     // `::std::panic::catch_unwind` for more details.
 //!     |panic_val| {
 //!         match panic_val.downcast_ref::<&'static str>() {
@@ -124,7 +124,7 @@ macro_rules! easy_ffi {
                 $dol (#[$attr])*
                 pub extern "C" fn $fn_name($dol ($arg : $arg_ty),*) -> $ok_ty {
                     let safe_res:
-                        ::std::result::Result<$ok_ty, ::std::result::Result<$err_ty, Box<::std::any::Any + Send + 'static>>> =
+                        ::std::result::Result<$ok_ty, ::std::result::Result<$err_ty, Box<dyn (::std::any::Any) + Send + 'static>>> =
                         ::std::panic::catch_unwind(move || $body)
                             .map_err(|e| ::std::result::Result::Err(e))
                             .and_then(|ok| ok.map_err(|e| ::std::result::Result::Ok(e)));
